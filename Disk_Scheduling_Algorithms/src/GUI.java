@@ -258,7 +258,7 @@ public class GUI implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				algo = new NewOptimized(initialNumber, request);
+				algo = new NewOptimized(0, request);
 				algo.runAlgorithm();
 				nodes = algo.getSequence();
 				frame.dispose();
