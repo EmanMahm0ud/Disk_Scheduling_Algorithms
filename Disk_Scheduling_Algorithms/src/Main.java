@@ -57,9 +57,21 @@ public class Main {
 				algo = new C_SCAN(initialNumber, request);
 				algo.runAlgorithm();
 				algo.print();
-				
-				//TODO add other algorithms
-				
+
+				System.out.println("LOOK :-");
+				algo = new Look(initialNumber, request);
+				algo.runAlgorithm();
+				algo.print();
+
+				System.out.println("C-LOOK :-");
+				algo = new CLook(initialNumber, request);
+				algo.runAlgorithm();
+				algo.print();
+
+				System.out.println("New Optimized :-");
+				algo = new NewOptimized(0, request);
+				algo.runAlgorithm();
+				algo.print();
 				break;
 			}
 			case 2:

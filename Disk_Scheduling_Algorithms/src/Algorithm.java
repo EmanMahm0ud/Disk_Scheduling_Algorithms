@@ -1,6 +1,4 @@
-
 import java.util.Vector;
-
 public abstract class Algorithm {
 	
 	//for input
@@ -19,7 +17,7 @@ public abstract class Algorithm {
 		
 		totalMovement = 0;
 		sequence = new Vector<>();
-		sequence.add(current);
+		//sequence.add(current);
 	}
 
 	abstract public void runAlgorithm();

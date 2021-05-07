@@ -9,7 +9,7 @@ public class FCFS extends Algorithm {
 	
 	@Override
 	public void runAlgorithm() {
-		
+		sequence.add(current);
 		for (int i = 0 ; i < request.size() ; i++) {
 			totalMovement += Math.abs(current - request.get(i));
 			current = request.get(i);

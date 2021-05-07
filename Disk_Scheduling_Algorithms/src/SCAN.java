@@ -8,6 +8,7 @@ public class SCAN extends Algorithm {
 
 	@Override
 	public void runAlgorithm() {
+		sequence.add(current);
 		Collections.sort(request);
 		int i, index = 0;
 		for (i = 0 ; i < request.size() ; i++) {

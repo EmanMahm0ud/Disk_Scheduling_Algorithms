@@ -8,6 +8,7 @@ public class SSTF extends Algorithm {
 
 	@Override
 	public void runAlgorithm() {
+		sequence.add(current);
 		int index;
 		while (!request.isEmpty()) {
 			index = minimumSeekTime();
