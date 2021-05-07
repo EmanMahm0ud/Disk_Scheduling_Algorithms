@@ -2,12 +2,12 @@ import java.util.Vector;
 public abstract class Algorithm {
 	
 	//for input
-	int current;
-	Vector<Integer> request;
+	int current;              //current request
+	Vector<Integer> request;  //vector of requests 
 	
 	//for output
-	int totalMovement;
-	Vector<Integer> sequence;
+	int totalMovement;        //the total head movements to access requests
+	Vector<Integer> sequence; //the sequence of head movements to access requests
 	
 	public Algorithm(int initialStart, Vector<Integer> request) {
 		super();
@@ -17,7 +17,6 @@ public abstract class Algorithm {
 		
 		totalMovement = 0;
 		sequence = new Vector<>();
-		//sequence.add(current);
 	}
 
 	abstract public void runAlgorithm();
@@ -32,6 +31,7 @@ public abstract class Algorithm {
 		System.out.println("\nTotal movement : " + totalMovement + "\n");
 	}
 	
+	//to avoid changing in the original vector
 	private void copyVector(Vector<Integer> vec) {
 		for (int i = 0 ; i < vec.size() ; i++)
 			request.add(vec.get(i));
@@ -41,3 +41,4 @@ public abstract class Algorithm {
 		return sequence;
 	}
 }
+
