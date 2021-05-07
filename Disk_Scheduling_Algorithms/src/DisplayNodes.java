@@ -29,13 +29,14 @@ public class DisplayNodes extends JPanel implements ActionListener {
 		
 		y = 50;
 		for (int j = 0 ; j <= i && !nodes.isEmpty() ; j++) {
+			if (j != 0)
+				g.drawLine((nodes.get(j - 1) + 100) * 2 + 20, y - 35, (nodes.get(j) + 100) * 2 + 20, y + 15);
 			g.setColor(Color.BLACK);
 			g.fillOval((nodes.get(j) + 100) * 2, y, 30, 30);
 			g.setColor(Color.WHITE);
 			g.drawString(Integer.toString(nodes.get(j)), (nodes.get(j) + 100) * 2 + 10 - Integer.toString(nodes.get(j)).length(), y + 20);
 			g.setColor(Color.DARK_GRAY);
-			if (j != 0)
-				g.drawLine((nodes.get(j - 1) + 100) * 2 + 20, y - 35, (nodes.get(j) + 100) * 2 + 20, y + 15);
+			
 			
 			y += 50;
 		}
@@ -54,3 +55,4 @@ public class DisplayNodes extends JPanel implements ActionListener {
 		}
 	}
 }
+
