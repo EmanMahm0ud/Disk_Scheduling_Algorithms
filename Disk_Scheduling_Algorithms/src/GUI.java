@@ -17,7 +17,8 @@ public class GUI implements ActionListener {
 	Vector<Integer> request = new Vector<>();
 	
 	JFrame frame, startFrame, requestFrame;
-	JButton FCFSbutton, SSTFbutton, SCANbutton, CSCANbutton, LOCKbutton, CLOCKbutton, okButton = new JButton("OK"), addButton = new JButton("ADD");
+	JButton FCFSbutton, SSTFbutton, SCANbutton, CSCANbutton, LOCKbutton, CLOCKbutton, OptimizedButton;
+	JButton okButton = new JButton("OK"), addButton = new JButton("ADD");
 	JTextField initialText = new JTextField(10);
 	JTextField numberText = new JTextField(10);
 	JTextField requestText = new JTextField(10);
@@ -46,6 +47,7 @@ public class GUI implements ActionListener {
 	}
 	
 	//first frame
+	//to take initial start and number of requests
 	void displayStartFrame() {
 		startFrame = new JFrame();
 		startPanel = new JPanel();
@@ -87,6 +89,7 @@ public class GUI implements ActionListener {
 	}
 	
 	//second frame
+	//to take queue of requests
 	void displayRequestQueueFrame() {
 		requestFrame = new JFrame();
 		requestPanel = new JPanel();
@@ -123,6 +126,7 @@ public class GUI implements ActionListener {
 	}
 	
 	//third frame
+	//to display sequence of heads movements of each algorithm
 	void displayAlgorithmFrame() {
 		frame = new JFrame();
 		frame.setTitle("Disk scheduling");
@@ -138,6 +142,7 @@ public class GUI implements ActionListener {
 		CSCANbutton = new JButton("CSCAN");
 		LOCKbutton = new JButton("LOCK");
 		CLOCKbutton = new JButton("CLOCK");
+		OptimizedButton = new JButton("New Optimized");
 		
 		FCFSbutton.setBackground(new java.awt.Color(177, 5, 5));
 		FCFSbutton.setForeground(Color.WHITE);
@@ -157,6 +162,9 @@ public class GUI implements ActionListener {
 		CLOCKbutton.setBackground(new java.awt.Color(177, 5, 5));
 		CLOCKbutton.setForeground(Color.WHITE);
 		
+		OptimizedButton.setBackground(new java.awt.Color(177, 5, 5));
+		OptimizedButton.setForeground(Color.WHITE);
+		
 		d  = new DisplayNodes(nodes);
 		d.setVisible(true);
 		panel = new JPanel();
@@ -171,6 +179,7 @@ public class GUI implements ActionListener {
 		panel.add(CSCANbutton);
 		panel.add(LOCKbutton);
 		panel.add(CLOCKbutton);
+		panel.add(OptimizedButton);
 		
 		FCFSbutton.addActionListener(new ActionListener() {
 			
@@ -214,6 +223,42 @@ public class GUI implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				algo = new C_SCAN(initialNumber, request);
+				algo.runAlgorithm();
+				nodes = algo.getSequence();
+				frame.dispose();
+				displayAlgorithmFrame();
+			}
+		});
+		LOCKbutton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				algo = new Look(initialNumber, request);
+				algo.runAlgorithm();
+				nodes = algo.getSequence();
+				frame.dispose();
+				displayAlgorithmFrame();
+			}
+		});
+		CLOCKbutton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				algo = new CLook(initialNumber, request);
+				algo.runAlgorithm();
+				nodes = algo.getSequence();
+				frame.dispose();
+				displayAlgorithmFrame();
+			}
+		});
+		OptimizedButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				algo = new NewOptimized(initialNumber, request);
 				algo.runAlgorithm();
 				nodes = algo.getSequence();
 				frame.dispose();
